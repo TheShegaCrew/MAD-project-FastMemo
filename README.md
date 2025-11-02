@@ -42,7 +42,7 @@ In today’s busy world, people especially students often need to jot down ideas
 
   ## 🎨 Design Prototype
 
-[View Figma Design Board](https://www.figma.com/design/P4x7B7zonQ8IyUKcrQVFEc/fast-memo-ui?node-id=0-1&m=dev&t=LlUBrS04M7abDDkl-1)**  
+[View Figma Design Board](https://www.figma.com/design/P4x7B7zonQ8IyUKcrQVFEc/fast-memo-ui?node-id=0-1&m=dev&t=LlUBrS04M7abDDkl-1)  
 
 ---
 
