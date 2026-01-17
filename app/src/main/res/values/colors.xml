@@ -2,4 +2,33 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Dark Theme Colors -->
+    <color name="background_dark">#121212</color>
+    <color name="surface_dark">#1E1E1E</color>
+    <color name="surface_variant_dark">#2A2A2A</color>
+    <color name="on_surface_dark">#FFFFFF</color>
+    <color name="on_surface_variant_dark">#B3B3B3</color>
+
+    <!-- Red Accent Colors -->
+    <color name="red_primary">#FF4444</color>
+    <color name="red_primary_dark">#CC0000</color>
+    <color name="red_primary_light">#FF6666</color>
+
+    <!-- Category Colors -->
+    <color name="category_personal">#FF4444</color>
+    <color name="category_classes">#2196F3</color>
+    <color name="category_lecture_notes">#9C27B0</color>
+    <color name="category_assignments">#FF9800</color>
+    <color name="category_exams">#F44336</color>
+    <color name="category_todo">#4CAF50</color>
+    <color name="category_reminders">#FFC107</color>
+    <color name="category_work">#4CAF50</color>
+    <color name="category_ideas">#FF9800</color>
+    <color name="category_urgent">#FF4444</color>
+
+    <!-- Text Colors -->
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_secondary">#B3B3B3</color>
+    <color name="text_hint">#666666</color>
 </resources>
