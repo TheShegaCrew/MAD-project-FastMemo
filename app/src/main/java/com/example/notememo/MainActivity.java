@@ -292,5 +292,102 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private void setupCategoryFilters() {
+        android.widget.CompoundButton.OnCheckedChangeListener chipListener = (buttonView, isChecked) -> {
+            Chip[] chips = {chipClasses, chipLectureNotes, chipAssignments, chipExams, chipToDo, chipReminders, chipPersonal};
+            if (isChecked) {
+                // Uncheck other chips and reset colors
+                if (buttonView == chipAll) {
+                    for (Chip c : chips) {
+                        if (c != null) {
+                            c.setChecked(false);
+                            c.setChipBackgroundColorResource(R.color.surface_variant_dark);
+                        }
+                    }
+                    viewModel.setSelectedCategory("All");
+                } else {
+                    chipAll.setChecked(false);
+                    chipAll.setChipBackgroundColorResource(R.color.surface_variant_dark);
+                    for (Chip c : chips) {
+                        if (c != null && c != buttonView) {
+                            c.setChecked(false);
+                            c.setChipBackgroundColorResource(R.color.surface_variant_dark);
+                        }
+                    }
+                    // Set category-specific color
+                    int categoryColor = getCategoryColorForChip(buttonView);
+                    ((Chip) buttonView).setChipBackgroundColorResource(categoryColor);
+                    if (buttonView == chipClasses) viewModel.setSelectedCategory("Classes");
+                    else if (buttonView == chipLectureNotes) viewModel.setSelectedCategory("Lecture Notes");
+                    else if (buttonView == chipAssignments) viewModel.setSelectedCategory("Assignments");
+                    else if (buttonView == chipExams) viewModel.setSelectedCategory("Exams & Tests");
+                    else if (buttonView == chipToDo) viewModel.setSelectedCategory("To-Do");
+                    else if (buttonView == chipReminders) viewModel.setSelectedCategory("Reminders");
+                    else if (buttonView == chipPersonal) viewModel.setSelectedCategory("Personal");
+                }
+            } else {
+                ((Chip) buttonView).setChipBackgroundColorResource(R.color.surface_variant_dark);
+            }
+            // Make All chip red when active
+            if (chipAll.isChecked()) {
+                chipAll.setChipBackgroundColorResource(R.color.red_primary);
+            } else {
+                chipAll.setChipBackgroundColorResource(R.color.surface_variant_dark);
+            }
+        };
+
+        chipAll.setOnCheckedChangeListener(chipListener);
+        chipClasses.setOnCheckedChangeListener(chipListener);
+        chipLectureNotes.setOnCheckedChangeListener(chipListener);
+        chipAssignments.setOnCheckedChangeListener(chipListener);
+        chipExams.setOnCheckedChangeListener(chipListener);
+        chipToDo.setOnCheckedChangeListener(chipListener);
+        chipReminders.setOnCheckedChangeListener(chipListener);
+        chipPersonal.setOnCheckedChangeListener(chipListener);
+    }
+
+    private int getCategoryColorForChip(android.view.View chip) {
+        if (chip == chipClasses) return R.color.category_classes;
+        if (chip == chipLectureNotes) return R.color.category_lecture_notes;
+        if (chip == chipAssignments) return R.color.category_assignments;
+        if (chip == chipExams) return R.color.category_exams;
+        if (chip == chipToDo) return R.color.category_todo;
+        if (chip == chipReminders) return R.color.category_reminders;
+        if (chip == chipPersonal) return R.color.category_personal;
+        return R.color.red_primary;
+    }
+
+    private void setupFAB() {
+        FloatingActionButton fab = findViewById(R.id.fabNewMemo);
+        fab.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, MemoEditorActivity.class);
+            startActivity(intent);
+        });
+
+        View btnNewMemoEmpty = findViewById(R.id.btnNewMemoEmpty);
+        if (btnNewMemoEmpty != null) {
+            btnNewMemoEmpty.setOnClickListener(v -> {
+                Intent intent = new Intent(MainActivity.this, MemoEditorActivity.class);
+                startActivity(intent);
+            });
+        }
+    }
+
+    private void observeViewModel() {
+        viewModel.getMemoList().observe(this, memos -> {
+            adapter.updateMemos(memos);
+            updateEmptyState(memos);
+        });
+
+        viewModel.getSearchQuery().observe(this, query -> {
+            // Search is handled automatically by ViewModel
+        });
+
+        viewModel.getSelectedCategory().observe(this, category -> {
+            // Category filter is handled automatically by ViewModel
+        });
+    }
+
+
 
 }
