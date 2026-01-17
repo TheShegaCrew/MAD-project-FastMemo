@@ -125,4 +125,40 @@ public class MainActivity extends AppCompatActivity {
         pinDialog.show();
     }
 
+    private void initViews() {
+        rvMemos = findViewById(R.id.rvMemos);
+        etSearch = findViewById(R.id.etSearch);
+        emptyState = findViewById(R.id.emptyState);
+        emptySearchState = findViewById(R.id.emptySearchState);
+        chipAll = findViewById(R.id.chipAll);
+        chipClasses = findViewById(R.id.chipClasses);
+        chipLectureNotes = findViewById(R.id.chipLectureNotes);
+        chipAssignments = findViewById(R.id.chipAssignments);
+        chipExams = findViewById(R.id.chipExams);
+        chipToDo = findViewById(R.id.chipToDo);
+        chipReminders = findViewById(R.id.chipReminders);
+        chipPersonal = findViewById(R.id.chipPersonal);
+        searchContainer = findViewById(R.id.searchContainer);
+        android.widget.ImageButton btnClearSearch = findViewById(R.id.btnClearSearch);
+
+        // Setup clear search button
+        if (btnClearSearch != null) {
+            btnClearSearch.setOnClickListener(v -> {
+                etSearch.setText("");
+                viewModel.setSearchQuery("");
+            });
+        }
+
+        if (emptySearchState != null) {
+            TextView tvMessage = emptySearchState.findViewById(R.id.tvEmptySearchMessage);
+            View btnClearSearchFromEmpty = emptySearchState.findViewById(R.id.btnClearSearch);
+            if (btnClearSearchFromEmpty != null) {
+                btnClearSearchFromEmpty.setOnClickListener(v -> {
+                    etSearch.setText("");
+                    viewModel.setSearchQuery("");
+                });
+            }
+        }
+    }
+
 }
