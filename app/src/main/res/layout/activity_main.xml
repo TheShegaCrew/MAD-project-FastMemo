@@ -34,6 +34,218 @@
         android:background="@color/background_dark"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
+        <!-- Search Bar - Always Visible Above Category Chips -->
+        <LinearLayout
+            android:id="@+id/searchContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:background="@color/background_dark">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/searchLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Search your memos..."
+                app:hintTextColor="@color/text_hint"
+                app:boxBackgroundMode="filled"
+                app:boxBackgroundColor="@color/surface_variant_dark"
+                style="@style/Widget.Material3.TextInputLayout.FilledBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etSearch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_primary"
+                    android:textColorHint="@color/text_hint"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <ImageButton
+                android:id="@+id/btnClearSearch"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@android:drawable/ic_menu_close_clear_cancel"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                app:tint="@color/text_primary"
+                android:contentDescription="Clear search"
+                android:layout_marginStart="8dp"
+                android:visibility="gone" />
+        </LinearLayout>
+        <!-- Memo List - Scrollable -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvMemos"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="16dp"
+                tools:listitem="@layout/item_memo" />
+
+            <!-- Empty Search State -->
+            <include
+                android:id="@+id/emptySearchState"
+                layout="@layout/empty_search_state"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone" />
+
+            <!-- Empty State -->
+            <LinearLayout
+                android:id="@+id/emptyState"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="32dp"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:src="@android:drawable/ic_menu_agenda"
+                    app:tint="@color/red_primary"
+                    android:layout_marginBottom="24dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="No memos yet"
+                    android:textColor="@color/text_primary"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tap to create your first note."
+                    android:textColor="@color/text_secondary"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="24dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnNewMemoEmpty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="New Memo"
+                    android:textColor="@color/white"
+                    app:icon="@android:drawable/ic_input_add"
+                    app:iconTint="@color/white"
+                    app:backgroundTint="@color/red_primary" />
+            </LinearLayout>
+        </FrameLayout>
+        <!-- Category Filters -->
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
+
+            <LinearLayout
+                android:id="@+id/categoryContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipAll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="All"
+                    android:checked="true"
+                    android:checkable="true"
+                    app:chipBackgroundColor="@color/red_primary"
+                    app:checkedIconVisible="false"
+                    android:textColor="@color/white"
+                    android:layout_marginEnd="8dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipClasses"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Classes"
+                    android:checkable="true"
+                    app:chipBackgroundColor="@color/surface_variant_dark"
+                    android:textColor="@color/text_primary"
+                    android:layout_marginEnd="8dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipLectureNotes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Lecture Notes"
+                    android:checkable="true"
+                    app:chipBackgroundColor="@color/surface_variant_dark"
+                    android:textColor="@color/text_primary"
+                    android:layout_marginEnd="8dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipAssignments"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Assignments"
+                    android:checkable="true"
+                    app:chipBackgroundColor="@color/surface_variant_dark"
+                    android:textColor="@color/text_primary"
+                    android:layout_marginEnd="8dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipExams"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Exams &amp; Tests"
+                    android:checkable="true"
+                    app:chipBackgroundColor="@color/surface_variant_dark"
+                    android:textColor="@color/text_primary"
+                    android:layout_marginEnd="8dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipToDo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="To-Do"
+                    android:checkable="true"
+                    app:chipBackgroundColor="@color/surface_variant_dark"
+                    android:textColor="@color/text_primary"
+                    android:layout_marginEnd="8dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipReminders"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Reminders"
+                    android:checkable="true"
+                    app:chipBackgroundColor="@color/surface_variant_dark"
+                    android:textColor="@color/text_primary"
+                    android:layout_marginEnd="8dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipPersonal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Personal"
+                    android:checkable="true"
+                    app:chipBackgroundColor="@color/surface_variant_dark"
+                    android:textColor="@color/text_primary" />
+            </LinearLayout>
+        </HorizontalScrollView>
+
     </LinearLayout>
 
 
