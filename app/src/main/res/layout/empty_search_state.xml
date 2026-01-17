@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="32dp">
+
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@android:drawable/ic_menu_search"
+        app:tint="@color/text_hint"
+        android:layout_marginBottom="24dp"
+        tools:tint="@color/text_hint" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No matches found"
+        android:textColor="@color/text_primary"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp"
+        tools:text="No matches found" />
+
+    <TextView
+        android:id="@+id/tvEmptySearchMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="We couldn't find anything matching 'Grocery list'. Try adjusting your search or create a new memo."
+        android:textColor="@color/text_secondary"
+        android:textSize="14sp"
+        android:gravity="center"
+        android:layout_marginBottom="24dp"
+        tools:text="We couldn't find anything matching 'Grocery list'. Try adjusting your search or create a new memo." />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnClearSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Clear Search"
+        android:textColor="@color/text_primary"
+        app:backgroundTint="@color/surface_variant_dark" />
+
+</LinearLayout>
+
