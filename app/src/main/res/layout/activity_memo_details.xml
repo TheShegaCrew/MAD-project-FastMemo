@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_dark">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/Theme.NoteMemo">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/background_dark"
+            app:contentInsetLeft="0dp"
+            app:contentInsetRight="0dp"
+            app:contentInsetStart="0dp"
+            app:contentInsetEnd="0dp"
+            app:contentInsetStartWithNavigation="0dp"
+            app:titleTextColor="@color/text_primary"
+            app:navigationIcon="@android:drawable/ic_menu_revert">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipCategory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Personal"
+                android:textSize="12sp"
+                app:chipBackgroundColor="@color/red_primary"
+                android:textColor="@color/white"
+                app:chipMinHeight="28dp"
+                android:layout_gravity="center_vertical|start"
+                android:layout_marginStart="16dp"
+                style="@style/Widget.Material3.Chip.Assist" />
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Memo Title -->
+            <TextView
+                android:id="@+id/tvMemoTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Grocery List for Weekend"
+                android:textColor="@color/text_primary"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="16dp"
+                tools:text="Grocery List for Weekend" />
+            
+
+            <TextView
+                android:id="@+id/tvMetadata"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Oct 24, 10:00 AM"
+                android:textColor="@color/text_secondary"
+                android:textSize="14sp"
+                android:layout_marginBottom="4dp"
+                tools:text="Oct 24, 10:00 AM" />
+
+            <TextView
+                android:id="@+id/tvUpdated"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Updated just now"
+                android:textColor="@color/text_hint"
+                android:textSize="12sp"
+                android:layout_marginBottom="24dp"
+                tools:text="Updated just now" />
+
+            <!-- Memo Content -->
+            <TextView
+                android:id="@+id/tvMemoContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1. Milk (Whole &amp; Almond)\n2. Eggs (Free range)\n3. Bread (Sourdough)\n4. Coffee beans (Espresso roast from local roaster)\n5. Greek Yogurt (Vanilla)\n6. Chicken breast (2lbs)\n7. Broccoli\n8. Sparkling water (Lemon flavor)"
+                android:textColor="@color/text_primary"
+                android:textSize="16sp"
+                android:lineSpacingMultiplier="1.2"
+                android:layout_marginBottom="24dp"
+                tools:text="1. Milk (Whole &amp; Almond)\n2. Eggs (Free range)\n3. Bread (Sourdough)\n4. Coffee beans (Espresso roast from local roaster)\n5. Greek Yogurt (Vanilla)\n6. Chicken breast (2lbs)\n7. Broccoli\n8. Sparkling water (Lemon flavor)" />
+
+
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
