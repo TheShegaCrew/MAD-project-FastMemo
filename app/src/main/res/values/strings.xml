@@ -1,3 +1,23 @@
 <resources>
-    <string name="app_name">FastMemo</string>
+    <string name="app_name">Fast Memo</string>
+    <string name="search_hint">Search your memos...</string>
+    <string name="new_memo">New Memo</string>
+    <string name="edit_memo">Edit Memo</string>
+    <string name="save">Save</string>
+    <string name="title_optional">Title (Optional)</string>
+    <string name="start_typing">Start typing your memo...</string>
+    <string name="category">Category</string>
+    <string name="all">All</string>
+    <string name="personal">Personal</string>
+    <string name="work">Work</string>
+    <string name="ideas">Ideas</string>
+    <string name="urgent">Urgent</string>
+    <string name="no_memos">No memos yet</string>
+    <string name="tap_to_create">Tap to create your first note.</string>
+    <string name="no_matches">No matches found</string>
+    <string name="clear_search">Clear Search</string>
+    <string name="last_edited">LAST EDITED TODAY AT 10:42 AM</string>
+    <string name="metadata">METADATA</string>
+    <string name="notes">Notes:</string>
+    <string name="attachments">Attachments</string>
 </resources>
