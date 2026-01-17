@@ -388,6 +388,51 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private void updateEmptyState(List<Memo> memos) {
+        String searchQuery = viewModel.getSearchQuery().getValue();
+        boolean isSearching = searchQuery != null && !searchQuery.trim().isEmpty();
 
+        if (memos.isEmpty()) {
+            if (isSearching) {
+                // Show empty search state - only show results or not found when searching
+                if (emptySearchState != null) {
+                    TextView tvMessage = emptySearchState.findViewById(R.id.tvEmptySearchMessage);
+                    if (tvMessage != null) {
+                        tvMessage.setText("We couldn't find anything matching '" + searchQuery +
+                                "'. Try adjusting your search or create a new memo.");
+                    }
+                    emptySearchState.setVisibility(View.VISIBLE);
+                }
+                rvMemos.setVisibility(View.GONE);
+                if (emptyState != null) {
+                    emptyState.setVisibility(View.GONE);
+                }
+            } else {
+                // Show no memos state - only when not searching
+                if (emptySearchState != null) {
+                    emptySearchState.setVisibility(View.GONE);
+                }
+                rvMemos.setVisibility(View.GONE);
+                if (emptyState != null) {
+                    emptyState.setVisibility(View.VISIBLE);
+                }
+            }
+        } else {
+            // Show results - hide all empty states
+            if (emptySearchState != null) {
+                emptySearchState.setVisibility(View.GONE);
+            }
+            rvMemos.setVisibility(View.VISIBLE);
+            if (emptyState != null) {
+                emptyState.setVisibility(View.GONE);
+            }
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // ViewModel will automatically update via LiveData
+    }
 
 }
