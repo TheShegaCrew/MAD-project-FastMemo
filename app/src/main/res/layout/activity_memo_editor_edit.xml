@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_dark">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/Theme.NoteMemo">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/background_dark"
+            app:contentInsetLeft="0dp"
+            app:contentInsetRight="0dp"
+            app:contentInsetStart="0dp"
+            app:contentInsetEnd="0dp"
+            app:contentInsetStartWithNavigation="0dp"
+            app:titleTextColor="@color/text_primary"
+            app:navigationIcon="@android:drawable/ic_menu_revert" />
+
+        <TextView
+            android:id="@+id/tvLastEdited"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="LAST EDITED TODAY AT 10:42 AM"
+            android:textColor="@color/text_hint"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.1"
+            android:paddingStart="16dp"
+            android:paddingBottom="8dp"
+            android:visibility="gone"
+            tools:text="LAST EDITED TODAY AT 10:42 AM"
+            tools:visibility="visible" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Title Input -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Title"
+                android:textColor="@color/text_primary"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/titleLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxBackgroundMode="filled"
+                app:boxBackgroundColor="@color/surface_variant_dark"
+                android:layout_marginBottom="16dp"
+                style="@style/Widget.Material3.TextInputLayout.FilledBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_primary"
+                    android:textColorHint="@color/text_hint"
+                    android:inputType="text"
+                    tools:text="Grocery List" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Category Selector -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Category"
+                android:textColor="@color/text_primary"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none"
+                android:layout_marginBottom="16dp">
+
+                <LinearLayout
+                    android:id="@+id/categoryContainer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipClasses"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Classes"
+                        android:checked="true"
+                        android:checkable="true"
+                        app:chipBackgroundColor="@color/red_primary"
+                        app:checkedIconVisible="true"
+                        android:textColor="@color/white"
+                        android:layout_marginEnd="8dp"
+                        />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipLectureNotes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Lecture Notes"
+                        android:checkable="true"
+                        app:chipBackgroundColor="@color/surface_variant_dark"
+                        android:textColor="@color/text_primary"
+                        android:layout_marginEnd="8dp"
+                        />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipAssignments"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Assignments"
+                        android:checkable="true"
+                        app:chipBackgroundColor="@color/surface_variant_dark"
+                        android:textColor="@color/text_primary"
+                        android:layout_marginEnd="8dp"
+                        />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipExams"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Exams &amp; Tests"
+                        android:checkable="true"
+                        app:chipBackgroundColor="@color/surface_variant_dark"
+                        android:textColor="@color/text_primary"
+                        />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipToDo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="To-Do"
+                        android:checkable="true"
+                        app:chipBackgroundColor="@color/surface_variant_dark"
+                        android:textColor="@color/text_primary"
+                        android:layout_marginEnd="8dp"
+                        />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipReminders"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Reminders"
+                        android:checkable="true"
+                        app:chipBackgroundColor="@color/surface_variant_dark"
+                        android:textColor="@color/text_primary"
+                        />
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <!-- Content Input -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/contentLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxBackgroundMode="filled"
+                app:boxBackgroundColor="@color/surface_variant_dark"
+                style="@style/Widget.Material3.TextInputLayout.FilledBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="300dp"
+                    android:gravity="top|start"
+                    android:textColor="@color/text_primary"
+                    android:textColorHint="@color/text_hint"
+                    android:inputType="textMultiLine"
+                    android:scrollbars="vertical"
+                    tools:text="1. Milk&#10;2. Bread&#10;3. Eggs (Free range)&#10;4. Coffee beans (Espresso roast)&#10;5. Spinach&#10;6. Almonds&#10;7. Greek Yogurt&#10;&#10;Remember to check the expiration dates on the yogurt. Also, see if there are any deals on bulk coffee." />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
