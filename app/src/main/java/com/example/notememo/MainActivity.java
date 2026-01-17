@@ -270,5 +270,27 @@ public class MainActivity extends AppCompatActivity {
                 .setNegativeButton("Cancel", null)
                 .show();
     }
+    private void setupSearch() {
+        etSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String query = s.toString();
+                viewModel.setSearchQuery(query);
+
+                // Show/hide clear button based on search text
+                android.widget.ImageButton btnClearSearch = findViewById(R.id.btnClearSearch);
+                if (btnClearSearch != null) {
+                    btnClearSearch.setVisibility(query.isEmpty() ? View.GONE : View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {}
+        });
+    }
+
 
 }
