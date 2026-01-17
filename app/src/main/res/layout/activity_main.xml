@@ -34,6 +34,51 @@
         android:background="@color/background_dark"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
+        <!-- Search Bar - Always Visible Above Category Chips -->
+        <LinearLayout
+            android:id="@+id/searchContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:background="@color/background_dark">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/searchLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Search your memos..."
+                app:hintTextColor="@color/text_hint"
+                app:boxBackgroundMode="filled"
+                app:boxBackgroundColor="@color/surface_variant_dark"
+                style="@style/Widget.Material3.TextInputLayout.FilledBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etSearch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_primary"
+                    android:textColorHint="@color/text_hint"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <ImageButton
+                android:id="@+id/btnClearSearch"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@android:drawable/ic_menu_close_clear_cancel"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                app:tint="@color/text_primary"
+                android:contentDescription="Clear search"
+                android:layout_marginStart="8dp"
+                android:visibility="gone" />
+        </LinearLayout>
+
     </LinearLayout>
 
 
