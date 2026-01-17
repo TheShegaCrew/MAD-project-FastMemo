@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.notememo"
-        minSdk = 21
+        minSdk = 23
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
@@ -61,3 +61,4 @@ dependencies {
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
 }
+

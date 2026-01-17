@@ -1,4 +1,4 @@
-package com.example.fastmemo;
+package com.example.notememo;
 
 import org.junit.Test;
 
