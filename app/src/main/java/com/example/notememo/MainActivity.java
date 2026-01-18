@@ -71,9 +71,6 @@ public class MainActivity extends AppCompatActivity {
         observeViewModel();
     }
 
-
-
-
     private void showPinDialog() {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
@@ -270,6 +267,7 @@ public class MainActivity extends AppCompatActivity {
                 .setNegativeButton("Cancel", null)
                 .show();
     }
+
     private void setupSearch() {
         etSearch.addTextChangedListener(new TextWatcher() {
             @Override
@@ -434,5 +432,4 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         // ViewModel will automatically update via LiveData
     }
-
 }
